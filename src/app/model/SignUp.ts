@@ -1,0 +1,1 @@
+export type SignUp = { fname: string, lname: string, email: string, password: string };

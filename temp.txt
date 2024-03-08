@@ -1,0 +1,29 @@
+npm install -g json-server
+
+create db.json file in 'src' folder
+
+then go to the folder where db.json exist and then
+
+json-server --watch db.json  // it will run the json server on the port 3000
+
+
+
+
+
+http://localhost:3000/users
+{
+    "fname": "harry",
+    "lname": "prajapati",
+    "email": "harry@gmail.com",
+    "password": "123456"
+}
+{
+    "fname": "mohit",
+    "lname": "chauhan",
+    "email": "mohit@gmail.com",
+    "password": "123456"
+}
+
+
+
+

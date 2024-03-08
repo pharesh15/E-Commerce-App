@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "4c09",
+      "fname": "harry",
+      "lname": "prajapati",
+      "email": "harry@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "3fff",
+      "fname": "mohit",
+      "lname": "chauhan",
+      "email": "mohit@gmail.com",
+      "password": "123456"
+    }
+  ]
+}
