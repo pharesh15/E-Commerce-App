@@ -24,4 +24,9 @@ export class HeaderComponent {
       }
     })
   }
+
+  logout() {
+    localStorage.removeItem("sellerData");
+    this.router.navigate(['/']);
+  }
 }
