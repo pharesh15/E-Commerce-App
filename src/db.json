@@ -1,18 +1,39 @@
 {
   "users": [
     {
-      "id": "4c09",
-      "fname": "harry",
-      "lname": "prajapati",
+      "id": "ce4b",
+      "firstName": "Haresh",
+      "lastName": "Prajapati",
       "email": "harry@gmail.com",
       "password": "123456"
     },
     {
-      "id": "3fff",
-      "fname": "mohit",
-      "lname": "chauhan",
-      "email": "mohit@gmail.com",
+      "id": "7c6c",
+      "firstName": "fgfgf",
+      "lastName": "fdk",
+      "email": "jdk@gamil.com",
+      "password": "kjfjk"
+    },
+    {
+      "id": "3b23",
+      "firstName": "ffffdf",
+      "lastName": "fjdk",
+      "email": "fkj@gmail.com",
+      "password": "fjdkf"
+    },
+    {
+      "id": "eb57",
+      "firstName": "Haresh",
+      "lastName": "Prajapati",
+      "email": "fjkfjd@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "4c21",
+      "firstName": "fdfj",
+      "lastName": "fkdfj",
+      "email": "dkfjkj@gmail.com",
+      "password": "jkjff"
     }
   ]
 }
