@@ -6,29 +6,35 @@
             <form #signUpForm="ngForm">
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" ngModel name="fname" class="form-control" id="firstName" name="firstName"
+                    <input type="text" ngModel name="fname" class="form-control"
+                        id="firstName" name="firstName"
                         required>
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" ngModel name="lname" class="form-control" id="lastName" name="lastName" required>
+                    <input type="text" ngModel name="lname" class="form-control"
+                        id="lastName" name="lastName" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" ngModel name="email" pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+                    <input type="email" ngModel name="email"
+                        pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
                         class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" ngModel name="password" min="6" class="form-control" id="password"
+                    <input type="password" ngModel name="password" min="6"
+                        class="form-control" id="password"
                         name="password" required>
                 </div>
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm
                         Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    <input type="password" class="form-control"
+                        id="confirmPassword" name="confirmPassword" required>
                 </div>
-                <button type="submit" [disabled]="signUpForm.invalid" (click)="handleRegister(signUpForm.value)"
+                <button type="submit" [disabled]="signUpForm.invalid"
+                    (click)="handleRegister(signUpForm.value)"
                     class="btn btn-primary">Register</button><br>
                 <a (click)="openLogin()">Already have an account? Click to
                     SignUp</a>
@@ -42,15 +48,18 @@
                 <p class="login-error">{{loginError}}</p>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" ngModel name="email" pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+                    <input type="email" ngModel name="email"
+                        pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
                         class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" ngModel name="password" min="6" class="form-control" id="password"
+                    <input type="password" ngModel name="password" min="6"
+                        class="form-control" id="password"
                         name="password" required>
                 </div>
-                <button type="submit" [disabled]="loginForm.invalid" (click)="handleLogin(loginForm.value)"
+                <button type="submit" [disabled]="loginForm.invalid"
+                    (click)="handleLogin(loginForm.value)"
                     class="btn btn-primary">Login</button><br>
                 <a (click)="openSignUp()">Already have an account? Click to
                     Login</a>

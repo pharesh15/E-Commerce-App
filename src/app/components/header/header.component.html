@@ -13,8 +13,10 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container d-flex align-center justify-content-between">
     <a class="navbar-brand" href="/">E-COMMERCE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -22,7 +24,8 @@
       <input class="form-control" type="search" placeholder="Search">
     </div>
 
-    <div [ngSwitch]="menuType" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div [ngSwitch]="menuType" class="collapse navbar-collapse"
+      id="navbarSupportedContent">
       <ul *ngSwitchCase="'DEFAULT'" class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Home</a>
@@ -51,16 +54,16 @@
 
       <ul *ngSwitchCase="'SELLER'" class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">Product List</a>
+          <a class="nav-link" routerLink="/seller-add-product">Add Product</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/seller-auth">Add Product</a>
+          <a class="nav-link" routerLink="/seller-home">Product List</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cart">Seller Name</a>
+          <a class="nav-link" routerLink="/cart">{{sellerName | titlecase}}</a>
         </li>
       </ul>
     </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SellerService } from '../../services/seller.service';
-import { Login, SignUp } from '../../model/SignUp';
+import { Login, SignUp } from '../../model/modelType';
 import { FormsModule } from '@angular/forms';
 
 @Component({

@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   menuType: string = "DEFAULT";
+  sellerName: string = "";
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -18,6 +19,9 @@ export class HeaderComponent {
       if (route.url) {
         if (localStorage.getItem("sellerData") && route.url.includes("seller")) {
           this.menuType = "SELLER";
+          let sellerStore = localStorage.getItem("sellerData");
+          let sellerData = sellerStore && JSON.parse(sellerStore)[0];
+          this.sellerName = sellerData.firstName;
         } else {
           this.menuType = "DEFAULT";
         }
