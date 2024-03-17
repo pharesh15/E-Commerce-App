@@ -12,11 +12,11 @@ import { Product } from '../../model/modelType';
 })
 export class SellerAddProductComponent {
   addProductMessage: string | undefined;
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService) { }
 
-  handleAddProduct(data:Product){
+  handleAddProduct(data: Product) {
     this.productService.addProduct(data).subscribe((result) => {
-      if(result){
+      if (result) {
         this.addProductMessage = "Product added successfully!!";
 
         setTimeout(() => {
