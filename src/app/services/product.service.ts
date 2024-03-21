@@ -36,4 +36,8 @@ export class ProductService {
   trendyProducts(limit: number) {
     return this.http.get<Product[]>(`http://localhost:3000/products?_limit=${limit}`);
   }
+
+  searchProduct(query: string){
+    return this.http.get<Product[]>(`http://localhost:3000/products?category=${query}`);
+  }
 }

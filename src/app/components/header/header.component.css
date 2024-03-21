@@ -1,0 +1,10 @@
+.searchBox{
+  position: relative;
+}
+
+.searchedList{
+  position: absolute;
+  width: 220px;
+  top: 40px;
+  left: 0;
+}

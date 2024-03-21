@@ -1,15 +1,3 @@
-<!-- <nav class="nav d-flex">
-    <h1>E-COMMERCE</h1>
-    <div>
-        <input type="text" placeholder="Search for Products">
-    </div>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Seller</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Cart(0)</a></li>
-    </ul>
-</nav> -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container d-flex align-center justify-content-between">
     <a class="navbar-brand" href="/">E-COMMERCE</a>
@@ -21,10 +9,26 @@
     </button>
 
     <div *ngIf="menuType === 'DEFAULT'">
-      <input class="form-control" type="search" placeholder="Search">
+
+      <div class="d-flex searchBox">
+        <input #searchInput type="search" (keyup)="searchProduct($event)"
+          (blur)="hideSearch()" placeholder="Search"
+          class="form-control mr-sm-2 me-2"
+          aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0"
+          (click)="submitSearch(searchInput.value)"
+          type="submit">Search</button>
+        <ul class="list-group searchedList" *ngIf="searchResult">
+          <li *ngFor="let item of searchResult"
+            class="list-group-item list-group-item-action"><a
+              class="text-decoration-none text-black"
+              href="#">{{item.name}}</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div [ngSwitch]="menuType" class="collapse navbar-collapse"
+    <div [ngSwitch]="menuType"
+      class="collapse navbar-collapse border"
       id="navbarSupportedContent">
       <ul *ngSwitchCase="'DEFAULT'" class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
@@ -39,17 +43,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">Cart(0)</a>
         </li>
-        <!-- <li class="nav-item dropdown"> -->
-        <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a> -->
-        <!-- <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
       </ul>
 
       <ul *ngSwitchCase="'SELLER'" class="navbar-nav mb-2 mb-lg-0">

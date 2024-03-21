@@ -16,7 +16,7 @@ export class HomeComponent {
   trendyProducts: undefined | Product[];
 
   constructor(private productService: ProductService){}
-  
+
   ngOnInit(): void {
     this.getPopularProducts();
     this.getTrendyProducts();

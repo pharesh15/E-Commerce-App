@@ -1,43 +1,45 @@
 <ngb-carousel *ngIf="popularProducts"
-    class="container my-5 p-3 shadow bg-secondary">
-    <ng-template *ngFor="let item of popularProducts" ngbSlide>
-        <div class="picsum-img-wrapper" style="text-align: center;">
-            <img [src]="item.imgUrl" alt="Product_Image"
-                style="width: 600px; height: 100%; object-fit: contain;" />
-        </div>
-        <div class="carousel-caption"
-            style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); color: #fff; background-color: rgba(0, 0, 0, 0.6);">
-            <h3>{{item.name}}</h3>
-            <p>{{item.description}}</p>
-        </div>
-    </ng-template>
+  class="container my-5 p-3 shadow bg-secondary">
+  <ng-template *ngFor="let item of popularProducts" ngbSlide>
+    <div class="picsum-img-wrapper" style="text-align: center;">
+      <img [src]="item.imgUrl" alt="Product_Image"
+        style="width: 600px; height: 100%; object-fit: contain;" />
+    </div>
+    <div class="carousel-caption"
+      style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); color: #fff; background-color: rgba(0, 0, 0, 0.6);">
+      <h3>{{item.name}}</h3>
+      <p>{{item.description}}</p>
+    </div>
+  </ng-template>
 </ngb-carousel>
 
 <div class="product-list-wrapper m-5" *ngIf="trendyProducts">
-    <h2>Trendy Products</h2>
-    <div
-        class="w-100 d-flex align-items-center justify-content-start flex-wrap">
-        <div class="shadow p-3 m-3" style="width: 23%"
-            *ngFor="let item of trendyProducts">
-            <div class="product-item border">
-                <img
-                    src="{{item.imgUrl}}"
-                    alt="Product_Image" style="width: 90%;">
-            </div>
-            <div class="product-details border text-center p-2">
-                <h6 class="name-head">{{item.name}}</h6>
-                <div class="product-price">
-                    <h6>Price: {{item.price}}</h6>
-                </div>
-                <div class="product-color">
-                    <h6>Color: {{item.color}}</h6>
-                </div>
-            </div>
-            <div
-                class="product-footer d-flex align-items-center justify-content-between p-2">
-                <a href>View Details</a>
-                <a href>Add to Cart</a>
-            </div>
+  <h2>Trendy Products</h2>
+  <div
+    class="row col-12 d-flex justify-content-start align-items-center">
+    <div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6 "
+      *ngFor="let item of trendyProducts">
+      <div class="me-3 mb-3 border shadow p-3">
+        <div class="product-item border py-2 w-100 text-center">
+          <img
+            src="{{item.imgUrl}}"
+            alt="Product_Image" style="width: 90%;">
         </div>
+        <div class="product-details border text-center p-2">
+          <h6 class="name-head">{{item.name}}</h6>
+          <div class="product-price">
+            <h6>Price: {{item.price}}</h6>
+          </div>
+          <div class="product-color">
+            <h6>Color: {{item.color}}</h6>
+          </div>
+        </div>
+        <div
+          class="product-footer d-flex align-items-center justify-content-between p-2">
+          <a href>View Details</a>
+          <a href>Add to Cart</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
