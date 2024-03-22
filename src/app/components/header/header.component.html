@@ -20,9 +20,13 @@
           type="submit">Search</button>
         <ul class="list-group searchedList" *ngIf="searchResult">
           <li *ngFor="let item of searchResult"
-            class="list-group-item list-group-item-action"><a
-              class="text-decoration-none text-black"
-              href="#">{{item.name}}</a></li>
+            class="list-group-item list-group-item-action"
+            style="cursor: pointer;"
+            (mousedown)="redirectToDetails(item.id)">
+            <a class="text-decoration-none text-black">
+              {{item.name}}
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -30,21 +34,44 @@
     <div [ngSwitch]="menuType"
       class="collapse navbar-collapse border"
       id="navbarSupportedContent">
+      <!-- default navigations -->
       <ul *ngSwitchCase="'DEFAULT'" class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Home</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/seller-auth">Seller</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user-auth">Login/Sign-up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">Cart(0)</a>
         </li>
       </ul>
 
+      <!-- navigations for user -->
+      <ul *ngSwitchCase="'USER'" class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/seller-auth">Seller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user-auth">{{userName |
+            titlecase}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="userLogout()"
+            style="cursor: pointer;">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">Cart(0)</a>
+        </li>
+      </ul>
+
+      <!-- navigations for seller -->
       <ul *ngSwitchCase="'SELLER'" class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="/seller-add-product">Add Product</a>
@@ -53,7 +80,8 @@
           <a class="nav-link" routerLink="/seller-home">Product List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
+          <a class="nav-link" style="cursor: pointer;"
+            (click)="logout()">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">{{sellerName | titlecase}}</a>

@@ -2,8 +2,7 @@
   @if (showLogin) {
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <!-- (ngSubmit)="handleRegister(signUpForm.value)" -->
-      <form #signUpForm="ngForm">
+      <form #userSignUp="ngForm">
         <div class="mb-3">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" ngModel name="fname" class="form-control"
@@ -53,10 +52,11 @@
             Confirm
             Password must be same</p>
         </div>
-        <button type="submit" [disabled]="signUpForm.invalid"
-          (click)="handleRegister(signUpForm.value)"
+        <button type="submit" [disabled]="userSignUp.invalid"
+          (click)="handleRegister(userSignUp.value)"
           class="btn btn-primary">Register</button><br>
-        <a (click)="openLogin()">Already have an account? Click to
+        <a (click)="openLogin()" style="cursor: pointer;">Already have an
+          account? Click to
           SignUp</a>
       </form>
     </div>
@@ -88,7 +88,8 @@
         <button type="submit" [disabled]="loginForm.invalid"
           (click)="handleLogin(loginForm.value)"
           class="btn btn-primary">Login</button><br>
-        <a (click)="openSignUp()">Already have an account? Click to
+        <a (click)="openSignUp()" style="cursor: pointer;">Already have an
+          account? Click to
           Login</a>
       </form>
     </div>

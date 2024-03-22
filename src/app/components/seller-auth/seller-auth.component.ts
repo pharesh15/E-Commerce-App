@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { SellerService } from '../../services/seller.service';
 import { Login, SignUp } from '../../model/modelType';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-seller-auth',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './seller-auth.component.html',
   styleUrl: './seller-auth.component.css'
 })

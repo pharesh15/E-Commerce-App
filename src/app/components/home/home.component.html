@@ -2,8 +2,10 @@
   class="container my-5 p-3 shadow bg-secondary">
   <ng-template *ngFor="let item of popularProducts" ngbSlide>
     <div class="picsum-img-wrapper" style="text-align: center;">
-      <img [src]="item.imgUrl" alt="Product_Image"
-        style="width: 600px; height: 100%; object-fit: contain;" />
+      <a routerLink="/details/{{item.id}}" class="text-decoration-none">
+        <img [src]="item.imgUrl" alt="Product_Image"
+          style="width: 600px; height: 100%; object-fit: contain;" />
+      </a>
     </div>
     <div class="carousel-caption"
       style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); color: #fff; background-color: rgba(0, 0, 0, 0.6);">
@@ -28,7 +30,7 @@
         <div class="product-details border text-center p-2">
           <h6 class="name-head">{{item.name}}</h6>
           <div class="product-price">
-            <h6>Price: {{item.price}}</h6>
+            <h6>Price: {{item.price | currency:'INR'}}</h6>
           </div>
           <div class="product-color">
             <h6>Color: {{item.color}}</h6>
@@ -36,7 +38,8 @@
         </div>
         <div
           class="product-footer d-flex align-items-center justify-content-between p-2">
-          <a href>View Details</a>
+          <a routerLink="/details/{{item.id}}" class="text-decoration-none">View
+            Details</a>
           <a href>Add to Cart</a>
         </div>
       </div>
