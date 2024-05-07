@@ -37,7 +37,19 @@ export class ProductService {
     return this.http.get<Product[]>(`http://localhost:3000/products?_limit=${limit}`);
   }
 
-  searchProduct(query: string){
+  searchProduct(query: string) {
     return this.http.get<Product[]>(`http://localhost:3000/products?category=${query}`);
+  }
+
+  localAddToCard(data: Product) {
+    let localProductCart = localStorage.getItem('localProductCart');
+    if (!localProductCart) {
+      localStorage.setItem('localProductCart', JSON.stringify([data]));
+    } else {
+      let cartData = [];
+      cartData = JSON.parse(localProductCart);
+      cartData.push(data);
+      localStorage.setItem('localProductCart', JSON.stringify(cartData));
+    }
   }
 }

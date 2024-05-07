@@ -16,6 +16,7 @@ export class HeaderComponent {
   searchResult: undefined | Product[];
   sellerName: string = "";
   userName: string = "";
+  cartItems: number = 0;
   constructor(private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -26,16 +27,20 @@ export class HeaderComponent {
           let sellerStore = localStorage.getItem("sellerData");
           let sellerData = sellerStore && JSON.parse(sellerStore)[0];
           this.sellerName = sellerData.firstName;
-        }else if (localStorage.getItem("userData")) {
+        } else if (localStorage.getItem("userData")) {
           this.menuType = "USER";
           let userStore = localStorage.getItem("userData");
           let userData = userStore && JSON.parse(userStore);
           this.userName = userData.firstName;
-        }else {
+        } else {
           this.menuType = "DEFAULT";
         }
       }
-    })
+    });
+
+    // let cartData = localStorage.getItem('localProductCart');
+    // this.cartItems = cartData ? JSON.parse(cartData).length : 0;
+    this.cartItems = localStorage.getItem('localProductCart') ? JSON.parse(localStorage.getItem('localProductCart')!!).length : 0;
   }
 
   logout() {
@@ -43,39 +48,39 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
-  userLogout(){
+  userLogout() {
     localStorage.removeItem("userData");
     this.router.navigate(['/user-auth']);
   }
 
-  searchProduct(event: KeyboardEvent){
-    if(event){
+  searchProduct(event: KeyboardEvent) {
+    if (event) {
       const element = event.target as HTMLInputElement;
-      if(element.value != ""){
+      if (element.value != "") {
         this.productService.searchProduct(element.value).subscribe((result) => {
-          if(result){
-            if(result.length > 5){
+          if (result) {
+            if (result.length > 5) {
               result.length = 5;
             }
             this.searchResult = result;
           }
         })
       }
-      else{
+      else {
         this.searchResult = undefined;
       }
     }
   }
 
-  hideSearch(){
+  hideSearch() {
     this.searchResult = undefined;
   }
 
-  submitSearch(val: string){
+  submitSearch(val: string) {
     this.router.navigate([`search/${val}`]);
   }
 
-  redirectToDetails(id: string){
+  redirectToDetails(id: string) {
     this.router.navigate(['/details/' + id]);
   }
 }

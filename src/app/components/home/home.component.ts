@@ -16,24 +16,24 @@ export class HomeComponent {
   popularProducts: undefined | Product[];
   trendyProducts: undefined | Product[];
 
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getPopularProducts();
     this.getTrendyProducts();
   }
 
-  getPopularProducts(){
+  getPopularProducts() {
     this.productService.popularProducts(3).subscribe((result) => {
-      if(result){
+      if (result) {
         this.popularProducts = result;
       }
     });
   }
 
-  getTrendyProducts(){
+  getTrendyProducts() {
     this.productService.trendyProducts(8).subscribe((result) => {
-      if(result){
+      if (result) {
         this.trendyProducts = result;
       }
     });

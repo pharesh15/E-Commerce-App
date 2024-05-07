@@ -14,28 +14,37 @@ import { CommonModule } from '@angular/common';
 export class ProductDetailsComponent {
   productQuantity: number = 1;
   productDetails: undefined | Product;
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductService){
+  constructor(private activeRoute: ActivatedRoute, private productService: ProductService) {
     this.handleDetails();
   }
 
-  handleDetails(){
+  handleDetails() {
     this.activeRoute.paramMap.subscribe((params) => {
       let productId = params.get('id');
       productId && this.productService.getProduct(productId).subscribe((result) => {
-        if(result){
+        if (result) {
           this.productDetails = result;
-        }else{
+        } else {
           this.productDetails = undefined;
         }
       });
     })
   }
 
-  handleQuantity(val: string){
-    if(this.productQuantity < 20 && val == 'plus'){
+  handleQuantity(val: string) {
+    if (this.productQuantity < 20 && val == 'plus') {
       this.productQuantity += 1;
-    }else if(this.productQuantity > 1 && val == 'min'){
+    } else if (this.productQuantity > 1 && val == 'min') {
       this.productQuantity -= 1;
+    }
+  }
+
+  handleAddToCart() {
+    if (this.productDetails) {
+      this.productDetails.quantity = this.productQuantity;
+      if (!localStorage.getItem('userData')) {
+        this.productService.localAddToCard(this.productDetails);
+      }
     }
   }
 }
