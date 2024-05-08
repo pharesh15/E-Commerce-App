@@ -1,20 +1,25 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container d-flex align-center justify-content-between">
     <a class="navbar-brand" href="/">E-COMMERCE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div *ngIf="menuType === 'DEFAULT'">
-
       <div class="d-flex searchBox">
-        <input #searchInput type="search" (keyup)="searchProduct($event)" (blur)="hideSearch()" placeholder="Search"
+        <input #searchInput type="search" (keyup)="searchProduct($event)"
+          (blur)="hideSearch()" placeholder="Search"
           class="form-control mr-sm-2 me-2" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="submitSearch(searchInput.value)"
+        <button class="btn btn-outline-success my-2 my-sm-0"
+          (click)="submitSearch(searchInput.value)"
           type="submit">Search</button>
         <ul class="list-group searchedList" *ngIf="searchResult">
-          <li *ngFor="let item of searchResult" class="list-group-item list-group-item-action" style="cursor: pointer;"
+          <li *ngFor="let item of searchResult"
+            class="list-group-item list-group-item-action"
+            style="cursor: pointer;"
             (mousedown)="redirectToDetails(item.id)">
             <a class="text-decoration-none text-black">
               {{item.name}}
@@ -24,7 +29,8 @@
       </div>
     </div>
 
-    <div [ngSwitch]="menuType" class="collapse navbar-collapse border" id="navbarSupportedContent">
+    <div [ngSwitch]="menuType" class="collapse navbar-collapse border"
+      id="navbarSupportedContent">
       <!-- default navigations -->
       <ul *ngSwitchCase="'DEFAULT'" class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
@@ -54,7 +60,8 @@
             titlecase}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="userLogout()" style="cursor: pointer;">Logout</a>
+          <a class="nav-link" (click)="userLogout()"
+            style="cursor: pointer;">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">Cart({{this.cartItems}})</a>
@@ -70,7 +77,8 @@
           <a class="nav-link" routerLink="/seller-home">Product List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
+          <a class="nav-link" style="cursor: pointer;"
+            (click)="logout()">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">{{sellerName | titlecase}}</a>

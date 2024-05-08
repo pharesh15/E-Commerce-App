@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/modelType';
 import { CommonModule } from '@angular/common';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-product-details',
@@ -44,6 +45,8 @@ export class ProductDetailsComponent {
       this.productDetails.quantity = this.productQuantity;
       if (!localStorage.getItem('userData')) {
         this.productService.localAddToCard(this.productDetails);
+      }else{
+        this.productService.remoteAddToCard(this.productDetails);
       }
     }
   }

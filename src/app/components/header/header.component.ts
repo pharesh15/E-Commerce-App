@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/modelType';
+import { UserService } from '../../services/user.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,7 @@ export class HeaderComponent {
   sellerName: string = "";
   userName: string = "";
   cartItems: number = 0;
-  constructor(private router: Router, private productService: ProductService) { }
+  constructor(private router: Router, private productService: ProductService, private userService: UserService, private cartSevice: CartService) { }
 
   ngOnInit(): void {
     this.router.events.subscribe((route: any) => {
@@ -40,7 +42,20 @@ export class HeaderComponent {
 
     // let cartData = localStorage.getItem('localProductCart');
     // this.cartItems = cartData ? JSON.parse(cartData).length : 0;
-    this.cartItems = localStorage.getItem('localProductCart') ? JSON.parse(localStorage.getItem('localProductCart')!!).length : 0;
+    if(localStorage.getItem('userData')){
+      this.cartSevice.getCartByUserId(JSON.parse(localStorage.getItem('userData')!).id).subscribe((data: any) => {
+        this.cartItems = data.length;
+      });
+    }else{
+      this.cartItems = localStorage.getItem('localProductCart') ? JSON.parse(localStorage.getItem('localProductCart')!!).length : 0;
+    }
+
+    this.productService.cartItems.subscribe((items) => {
+      this.cartItems = items;
+    });
+    this.userService.cartItems.subscribe((items) => {
+      this.cartItems = items;
+    });
   }
 
   logout() {
@@ -50,6 +65,7 @@ export class HeaderComponent {
 
   userLogout() {
     localStorage.removeItem("userData");
+    this.cartItems = 0;
     this.router.navigate(['/user-auth']);
   }
 

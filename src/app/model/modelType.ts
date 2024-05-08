@@ -21,3 +21,10 @@ export interface Product {
     imgUrl: string,
     quantity: undefined | number,
 }
+
+export interface Cart {
+  id?: string,
+  userId: string,
+  productId: string,
+  quantity: number,
+}
