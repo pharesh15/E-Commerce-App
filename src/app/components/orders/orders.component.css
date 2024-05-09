@@ -1,0 +1,22 @@
+.orders h1 {
+  margin: 30px 0 50px 0;
+  text-align: center;
+}
+
+.orders img {
+  height: 50px;
+}
+
+.orders-data {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/*
+.orders > div {
+  border: 1px solid red;
+}
+
+.orders > div > div {
+  border: 1px solid green;
+} */

@@ -28,3 +28,19 @@ export interface Cart {
   productId: string,
   quantity: number,
 }
+
+export interface PriceSummary{
+  price: number,
+  discount: number,
+  tax: number,
+  delivery: number,
+  total: number
+}
+
+export interface Order{
+  email: string,
+  address: string,
+  contact: string,
+  totalPayableAmount: number,
+  userId: number
+}

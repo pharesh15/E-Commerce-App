@@ -13,10 +13,6 @@ export class CartService {
     return this.http.post("http://localhost:3000/cart", data);
   }
 
-  getAllCart() {
-    return this.http.get<Cart[]>("http://localhost:3000/cart");
-  }
-
   deleteCartById(id: string) {
     return this.http.delete(`http://localhost:3000/cart/${id}`);
   }

@@ -10,6 +10,8 @@ import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -22,4 +24,6 @@ export const routes: Routes = [
     {path: 'details/:id', component: ProductDetailsComponent},
     {path: 'user-auth', component: UserAuthComponent},
     {path: 'cart', component: CartComponent},
+    {path: 'checkout', component: CheckoutComponent},
+    {path: 'orders', component: OrdersComponent}
   ];

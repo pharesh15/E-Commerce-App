@@ -1,0 +1,49 @@
+<div class="checkout">
+  <h1>Checkout</h1>
+  <div class="row col-12">
+    <div class="col-sm-7">
+      <h3>Add Shipping Address</h3>
+      <form #orderData="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" ngModel name="email"
+            pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+            class="form-control" id="email"
+            #email="ngModel" required>
+          <p class="text-danger mt-1 ms-1"
+            *ngIf="email.invalid && email.touched">Please Enter
+            Valid Email</p>
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" ngModel name="address" class="form-control"
+            id="address" #address="ngModel" minlength="2"
+            required>
+          <p class="text-danger mt-1 ms-1"
+            *ngIf="address.invalid && address.touched">Please Enter
+            Valid address</p>
+        </div>
+
+        <div class="mb-3">
+          <label for="contact" class="form-label">Contact Number</label>
+          <input type="text" ngModel name="contact" class="form-control"
+            id="contact" pattern="^[0-9]+$"
+            #contact="ngModel" minlength="10" maxlength="10"
+            required>
+          <p class="text-danger mt-1 ms-1"
+            *ngIf="contact.invalid && contact.touched">Please Enter
+            Valid Contact Number</p>
+        </div>
+
+        <button type="submit" [disabled]="orderData.invalid"
+          (click)="handleOrderData(orderData.value)"
+          class="btn btn-primary">Order Now</button><br>
+      </form>
+    </div>
+    <div class="col-sm-5">
+      <h3>Total Amount : {{totalPayableAmount | currency:'INR'}}</h3>
+      <h4>Payment Method: <b>Pay on Delivery</b></h4>
+    </div>
+  </div>
+</div>
