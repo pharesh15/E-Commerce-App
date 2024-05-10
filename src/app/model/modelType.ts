@@ -38,6 +38,7 @@ export interface PriceSummary{
 }
 
 export interface Order{
+  id: string | undefined,
   email: string,
   address: string,
   contact: string,

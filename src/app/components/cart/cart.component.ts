@@ -34,26 +34,29 @@ export class CartComponent {
       this.cartService.getCartByUserId(userData.id).subscribe((cartData: any) => {
         if(cartData.length > 0){
           cartData.forEach((item: Cart, index: number) => {
-            this.productService.getProduct(item.productId).subscribe((productData: any) => {
-              let productTotalPrice = 0;
-              if(productData){
-                productTotalPrice = Number(item.quantity) * Number(productData.price);
-                cartProductData.push({
-                  ...item,
-                  ...productData,
-                  productTotalPrice
-                });
-                this.priceSummary.price = this.priceSummary.price + productTotalPrice;
-              }
+            setTimeout(() => {
+              this.productService.getProduct(item.productId).subscribe((productData: any) => {
+                let productTotalPrice = 0;
+                if(productData){
+                  productTotalPrice = Number(item.quantity) * Number(productData.price);
+                  cartProductData.push({
+                    ...productData,
+                    ...item,
+                    productTotalPrice
+                  });
+                  this.priceSummary.price = this.priceSummary.price + productTotalPrice;
+                }
 
-              if(index === cartData.length - 1){
-                this.cartAllData = cartProductData;
-                this.priceSummary.discount = (this.priceSummary.price * 8 / 100);
-                this.priceSummary.tax = (this.priceSummary.price * 5 / 100);
-                this.priceSummary.delivery = 100;
-                this.priceSummary.total = this.priceSummary.price + this.priceSummary.delivery + this.priceSummary.tax - this.priceSummary.discount;
-              }
-            });
+                if(index === cartData.length - 1){
+                  this.cartAllData = cartProductData;
+                  this.productService.cartItems.emit(this.cartAllData.length);
+                  this.priceSummary.discount = (this.priceSummary.price * 8 / 100);
+                  this.priceSummary.tax = (this.priceSummary.price * 5 / 100);
+                  this.priceSummary.delivery = 100;
+                  this.priceSummary.total = this.priceSummary.price + this.priceSummary.delivery + this.priceSummary.tax - this.priceSummary.discount;
+                }
+              });
+            }, 800);
           });
         }
       });
@@ -62,5 +65,18 @@ export class CartComponent {
 
   handleCheckout(){
     this.router.navigate(['/checkout']);
+  }
+
+  handleRemoveFromCart(id: string | undefined){
+    id && this.cartService.deleteCartById(id).subscribe(() => {
+      this.priceSummary = {
+        price: 0,
+        delivery: 0,
+        discount: 0,
+        tax: 0,
+        total: 0
+      }
+      this.getCartData();
+    });
   }
 }

@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container d-flex align-center justify-content-between">
-    <a class="navbar-brand" href="/">E-COMMERCE</a>
+  <div class="d-flex align-center justify-content-between container"
+    style="width: 100%;">
+    <a class="navbar-brand" href="/"
+      style="width: 20%;">E-COMMERCE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -8,7 +10,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div *ngIf="menuType === 'DEFAULT'">
+    <div *ngIf="menuType !== 'SELLER'"
+      style="width: 30%;">
       <div class="d-flex searchBox">
         <input #searchInput type="search" (keyup)="searchProduct($event)"
           (blur)="hideSearch()" placeholder="Search"
@@ -29,10 +32,12 @@
       </div>
     </div>
 
-    <div [ngSwitch]="menuType" class="collapse navbar-collapse border"
-      id="navbarSupportedContent">
+    <div [ngSwitch]="menuType" class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      style="width: 50%; display: flex; justify-content: right;">
       <!-- default navigations -->
-      <ul *ngSwitchCase="'DEFAULT'" class="navbar-nav mb-2 mb-lg-0">
+      <ul *ngSwitchCase="'DEFAULT'"
+        class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="/seller-auth">Seller</a>
         </li>
@@ -58,6 +63,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/user-auth">{{userName |
             titlecase}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/orders">Orders</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="userLogout()"

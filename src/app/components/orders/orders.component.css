@@ -4,16 +4,23 @@
 }
 
 .orders img {
-  height: 50px;
+  height: 60px;
+  border: 1px solid #ddd;
+}
+
+.orders-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
 }
 
 .orders-data {
   padding-bottom: 10px;
+  margin-top: 20px;
   border-bottom: 1px solid #ddd;
 }
 
-/*
-.orders > div {
+/* .orders > div {
   border: 1px solid red;
 }
 

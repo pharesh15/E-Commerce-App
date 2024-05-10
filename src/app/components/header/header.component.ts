@@ -5,6 +5,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/modelType';
 import { UserService } from '../../services/user.service';
 import { CartService } from '../../services/cart.service';
+import { CheckoutService } from '../../services/checkout.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,13 @@ export class HeaderComponent {
   sellerName: string = "";
   userName: string = "";
   cartItems: number = 0;
-  constructor(private router: Router, private productService: ProductService, private userService: UserService, private cartSevice: CartService) { }
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private userService: UserService,
+    private cartSevice: CartService,
+    private checkoutService: CheckoutService
+  ) { }
 
   ngOnInit(): void {
     this.router.events.subscribe((route: any) => {
@@ -53,9 +60,14 @@ export class HeaderComponent {
     this.productService.cartItems.subscribe((items) => {
       this.cartItems = items;
     });
+
     this.userService.cartItems.subscribe((items) => {
       this.cartItems = items;
     });
+
+    this.checkoutService.cartItems.subscribe((items) => {
+      this.cartItems = items;
+    })
   }
 
   logout() {
